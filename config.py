@@ -1,0 +1,3 @@
+CHUNK_SIZE = 500
+CHUNK_OVERLAP = 50
+COUCHBASE_BUCKET = "appliance_manuals"
