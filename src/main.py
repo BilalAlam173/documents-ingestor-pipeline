@@ -1,4 +1,4 @@
-from doc_loader import load_all_documents
+from doc_loader import load_new_documents
 from doc_chunker import chunk_documents
 from vector_converter import convert_to_vectors_and_store
 import time
@@ -6,10 +6,14 @@ import time
 def main():
     print("🚀 Starting the appliance manual ingestion pipeline...")
 
-    # Step 1: Load Documents
-    print("\n📥 Loading PDF documents...")
-    documents = load_all_documents("manuals/")
-    print(f"✅ Loaded {len(documents)} documents.")
+    # Step 1: Load Only New Documents
+    print("\n📥 Loading only new PDF documents...")
+    documents = load_new_documents("manuals/")
+    if not documents:
+        print("✅ No new documents found. Exiting pipeline.")
+        return
+    
+    print(f"✅ Loaded {len(documents)} new documents.")
 
     # Step 2: Chunk Documents
     print("\n✂️ Chunking documents...")
